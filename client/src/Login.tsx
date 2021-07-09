@@ -6,6 +6,25 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 
+const CLIENT_ID: String = '72bd15495cfe4f5f8418be092849b08a';
+const RESPONSE_TYPE: String = 'code';
+const REDIRECT_URI: String = 'http://localhost:3000'
+const SCOPE: Array<String> = [
+    'streaming',
+    'user-read-email',
+    'user-read-private',
+    'user-library-read',
+    'user-library-modify',
+    'user-read-playback-state',
+    'user-modify-playback-state',
+]
+
+const AUTH_URL = `https://accounts.spotify.com/authorize?
+client_id=${CLIENT_ID}&
+response_type=${RESPONSE_TYPE}&
+redirect_uri=${REDIRECT_URI}&
+scope=${encodeURIComponent(SCOPE.join(' '))}`;
+
 const useStyles = makeStyles((theme: Theme) => 
     createStyles({
         loginBtn: {
@@ -41,7 +60,8 @@ export const Login = () => {
                     <CardActionsCenter>
                         <LoginButton
                             variant="contained"
-                            size="large">
+                            size="large"
+                            href={AUTH_URL}>
                             Spotify Login
                         </LoginButton>
                     </CardActionsCenter>
