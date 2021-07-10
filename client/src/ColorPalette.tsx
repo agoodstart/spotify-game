@@ -56,6 +56,20 @@ type Props = {
   children?: JSX.Element | JSX.Element[];
 };
 
+interface PropsType {
+  children: JSX.Element
+}
+
+class Component extends React.Component<PropsType, {}> {
+  render() {
+    return (
+      <ThemeProvider theme={theme}>
+        {this.props.children}
+      </ThemeProvider>
+    )
+  }
+}
+
 const ColorPalette = ({children}: Props) => {
     
     return (

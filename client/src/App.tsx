@@ -1,9 +1,13 @@
 import React from 'react';
+import {Dashboard} from './Dashboard';
 import ColorPalette from './ColorPalette';
 import './App.css';
 import {Login} from './Login';
 import {BrowserRouter, Link } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+
+const code = new URLSearchParams(window.location.search)
+  .get('code');
 
 const useStyles = makeStyles((theme: Theme) => 
     createStyles({
@@ -20,7 +24,7 @@ function App() {
   return (
     <ColorPalette>
       <div className="App">
-        <Login />
+        {code ? <Dashboard code={code} /> : <Login />}
       </div>
     </ColorPalette>
   );
