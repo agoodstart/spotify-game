@@ -32,7 +32,9 @@ const useAuth = (code: string) => {
             // setExpiresIn(res.data.expires_in);
             // setTokenType(res.data.token_type);
 
-            axios.get('https://api.spotify.com/v1/artists/1Xyo4u8uXC1ZmMpatF05PJ', {
+            const q = 'bob'
+
+            axios.get('https://api.spotify.com/v1/search?q=bob&type=artist', {
                 headers: {
                     'Authorization': res.data.token_type + ' ' + res.data.access_token,
                 }
